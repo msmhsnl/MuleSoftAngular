@@ -1,1 +1,27 @@
-<p>orders works!</p>
+<ul>
+  <li *ngFor="let order of orders;let i=index">
+    <div class="list-item">
+      <div class="sub-item index">{{i+1}}</div>
+      <div class="sub-item code">{{order.OrderCode}}</div>
+      <div class="btn" (click)="DeleteOrder(order)">Delete Order</div>
+    </div>
+    <ul>
+      <li>
+        <div class="sub-list-item">
+          <div class="sub-item">No</div>
+          <div class="sub-item">ProductCode</div>
+          <div class="sub-item">Quantity</div>
+          <div class="sub-item">TotalAmount</div>
+        </div>
+      </li>
+      <li *ngFor="let orderdetail of order.Items;let i=index">
+        <div class="sub-list-item">
+          <div class="sub-item">{{i+1}}</div>
+          <div class="sub-item">{{orderdetail.ProductCode}}</div>
+          <div class="sub-item">{{orderdetail.Quantity}}</div>
+          <div class="sub-item">{{orderdetail.TotalAmount}}TL</div>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>

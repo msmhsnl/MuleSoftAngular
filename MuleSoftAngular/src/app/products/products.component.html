@@ -1,4 +1,13 @@
-<p>
-    deneme
-</p>
+<ul>
+    <li *ngFor="let product of products;let i=index">
+        <div class="list-item">
+            <div class="sub-item index">{{i+1}}</div>
+            <div class="sub-item code">{{product.ProductCode}}</div>
+            <div class="sub-item name">{{product.ProductName}}</div>
+            <div class="sub-item price">{{product.SellingPrice}}TL</div>
+            <div class="btn">Add To Cart</div>
+        </div>
+    </li>
+</ul>
+
 
