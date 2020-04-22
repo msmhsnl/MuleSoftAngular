@@ -1,21 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiClientService } from './api-client.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private apiClientService:ApiClientService
+  ) { }
 
-  GetOrders(){ 
+  GetOrders():Observable<any>{ 
     
-    return this.http.get('http://localhost:8081/api/orders/getOrder');
+    return this.apiClientService.get('http://localhost:8081/api/orders/getOrder');
   
   }
 
-  DeleteOrder(order){
-    return this.http.delete('http://localhost:8081/api/orders/deleteOrder?ordercode='+order.OrderCode);
+  PostOrder(body):Observable<any>{
+
+    return this.apiClientService.post('http://localhost:8081/api/orders/postOrder',body);
+
+  }
+
+  DeleteOrder(order):Observable<any>{
+
+    return this.apiClientService.delete('http://localhost:8081/api/orders/deleteOrder?ordercode='+order.OrderCode);
+
   }
 
 }

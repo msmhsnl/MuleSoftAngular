@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OrdersService} from '../services/orders.service';
 import {Order} from '../models/order.model';
+import { DataService } from '../services/data.service';
 
 
 @Component({
@@ -11,26 +12,38 @@ import {Order} from '../models/order.model';
 export class OrdersComponent implements OnInit {
 
   public orders:Order[];
-  Request(){
+
+  GetOrders(){
+
     this.orderService.GetOrders().subscribe(response=>{
-      this.orders=response.result;
+      if(response.isSucceeded){
+        this.orders=response.result.sort((x,y) => x.OrderCode > y.OrderCode ? 1 : -1);
+      }else{
+        alert(response.message);
+      }
     });
   }
 
   DeleteOrder(order){
+
     this.orderService.DeleteOrder(order).subscribe(response=>{
-      let index=this.orders.indexOf(order);
-      this.orders.splice(index,1)});
-    
+      
+      if(response.isSucceeded){
+        let index=this.orders.indexOf(order);
+        this.orders.splice(index,1);
+        alert(response.message);
+      }else{
+        alert(response.message);
+      }
+    });
   }
 
-  constructor(private orderService: OrdersService) {
-    this.Request();
-    
-    
+  constructor(
+    private orderService: OrdersService,
+    private dataService:DataService) {
+      this.GetOrders();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

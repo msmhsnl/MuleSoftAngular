@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductsService} from '../services/products.service';
 import {Product} from '../models/product.model';
-import {ProductResponse} from '../models/product.response.model';
-import { DataService }     from '../services/data.service';
+import { DataService } from '../services/data.service';
+
+
 
 @Component({
   selector: 'app-products',
@@ -11,28 +12,51 @@ import { DataService }     from '../services/data.service';
 })
 export class ProductsComponent implements OnInit {
 
-  
-  
   public products:Product[];
-  Request(){
+  
+  GetProducts(){
+
     this.productService.GetProducts().subscribe(response=>{
-      this.products=response[0].result;
+        
+      if(response.isSucceeded){
+        this.products=response.result.sort((x,y) => x.ProductCode > y.ProductCode ? 1 : -1);
+      }else{
+        alert(response.message);
+      }
+      
     });
     
   }
   
-  message:string;
+  productList=[];
 
-  constructor(private productService: ProductsService) {
-    
+  AddToCart(product){
 
-    this.Request();
-   
+    let exist=false;
+
+    this.productList.forEach(element => {
+      if(element==product){
+        exist=true;
+      }
+    });
+
+    if(exist){
+      alert("Product Already Exist in Cart");
+    }else{
+      this.productList.push(product);
+      localStorage.setItem("data",JSON.stringify(this.productList));
+      alert("Product Added to Cart");
+    }
   }
 
-  ngOnInit(): void {
-    this.dataService.currentMessage.subscribe(message=>this.message=message);
-  
+  constructor(
+    private productService: ProductsService,
+    private dataService:DataService
+    ) {
+      this.GetProducts();
+      localStorage.clear();
   }
+
+  ngOnInit(): void {}
 
 }
