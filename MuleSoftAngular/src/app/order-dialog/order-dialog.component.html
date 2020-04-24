@@ -1,0 +1,23 @@
+<mat-dialog-content>
+  <ul id="{{i}}">
+    <li>
+      <div class="sub-list-item title">
+        <div class="sub-item">Product Code</div>
+        <div class="sub-item">Quantity</div>
+        <div class="sub-item">Total Price</div>
+      </div>
+    </li>
+    <li *ngFor="let orderdetail of order.Items;let i=index">
+      <div class="sub-list-item">
+        <div class="sub-item">{{orderdetail.ProductCode}}</div>
+        <div class="sub-item">{{orderdetail.Quantity}}</div>
+        <div class="sub-item">{{orderdetail.TotalAmount}}TL</div>
+      </div>
+    </li>
+    <div class="btn" (click)="DeleteOrder(order)">Delete Order</div>
+  </ul>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="Delete()">delete</button>
+</mat-dialog-actions>

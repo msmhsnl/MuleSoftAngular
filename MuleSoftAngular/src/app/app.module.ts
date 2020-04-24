@@ -8,8 +8,12 @@ import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './services/data.service';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ApiClientService } from './services/api-client.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { OrderDialogComponent } from './order-dialog/order-dialog.component';
+
 
 
 
@@ -19,13 +23,19 @@ import { ApiClientService } from './services/api-client.service';
     HeaderComponent,
     ProductsComponent,
     OrdersComponent,
-    CartComponent
+    CartComponent,
+    OrderDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
+  ],
+  entryComponents:[
+    OrderDialogComponent
   ],
   providers: [DataService,
     ApiClientService],

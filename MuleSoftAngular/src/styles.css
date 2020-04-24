@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #E4506A;
+  background-color: rgb(192, 92, 108);
   height: 8vh;
   border-radius: 10px;
   color: #ffff;
@@ -68,3 +68,5 @@
   font-size: 18px;
   color: #2e2e2e;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
