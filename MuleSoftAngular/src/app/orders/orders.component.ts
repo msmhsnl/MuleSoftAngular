@@ -23,7 +23,22 @@ export class OrdersComponent implements OnInit {
       }
     });
   }
-
+  setDropdownView="display:none";
+  ToggleView(i){
+    let item=document.getElementById(i);
+    if(item.getAttribute("style")==""){
+      item.setAttribute("style","display:none");
+    }else{
+      item.setAttribute("style","");
+    }
+  }
+  GetTotal(order){
+    let total=0;
+    order.Items.forEach(element => {
+      total+=element.TotalAmount;
+    });
+    return total;
+  }
   DeleteOrder(order){
 
     this.orderService.DeleteOrder(order).subscribe(response=>{

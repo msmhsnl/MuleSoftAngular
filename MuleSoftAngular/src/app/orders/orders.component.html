@@ -1,27 +1,26 @@
-<ul>
-  <li *ngFor="let order of orders;let i=index">
-    <div class="list-item">
-      <div class="sub-item index">{{i+1}}</div>
-      <div class="sub-item code">{{order.OrderCode}}</div>
-      <div class="btn" (click)="DeleteOrder(order)">Delete Order</div>
+<ul class="list">
+  <li class="item" (click)="ToggleView(i)" *ngFor="let order of orders;let i=index">
+    <div class="list-item ">
+      <div class="sub-item code">Order Code:{{order.OrderCode}}</div>
+      <div class="sub-item">Price: {{GetTotal(order)}}TL</div>
     </div>
-    <ul>
+    <ul id="{{i}}" style="{{setDropdownView}}">
       <li>
-        <div class="sub-list-item">
-          <div class="sub-item">No</div>
-          <div class="sub-item">ProductCode</div>
+        <div class="sub-list-item title">
+          <div class="sub-item">Product Code</div>
           <div class="sub-item">Quantity</div>
-          <div class="sub-item">TotalAmount</div>
+          <div class="sub-item">Total Price</div>
         </div>
       </li>
       <li *ngFor="let orderdetail of order.Items;let i=index">
         <div class="sub-list-item">
-          <div class="sub-item">{{i+1}}</div>
           <div class="sub-item">{{orderdetail.ProductCode}}</div>
           <div class="sub-item">{{orderdetail.Quantity}}</div>
           <div class="sub-item">{{orderdetail.TotalAmount}}TL</div>
         </div>
       </li>
+      <div class="btn" (click)="DeleteOrder(order)">Delete Order</div>
     </ul>
+
   </li>
 </ul>

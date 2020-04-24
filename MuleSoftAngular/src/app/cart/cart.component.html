@@ -1,9 +1,8 @@
-<ul>
-    <input id="orderCode" type="number" value="">
+<ul class="list">
+    <input id="orderCode" type="number" value="" placeholder="Enter Order Code">
     <div class="btn" (click)="CreateOrder()">Create Order</div>
     <li>
-        <div class="list-item">
-            <div class="sub-item">No</div>
+        <div class="list-item title">
             <div class="sub-item">Product Code</div>
             <div class="sub-item">Product Name</div>
             <div class="sub-item">Quantity</div>
@@ -12,7 +11,6 @@
     </li>
     <li *ngFor="let orderItem of orderList;let i=index">
         <div class="list-item">
-            <div class="sub-item index">{{i+1}}</div>
             <div class="sub-item code">{{orderItem.ProductCode}}</div>
             <div class="sub-item name">{{orderItem.ProductName}}</div>
             <input class="sub-item quantity" type="number" (change)="InputChange(i)" value="1">

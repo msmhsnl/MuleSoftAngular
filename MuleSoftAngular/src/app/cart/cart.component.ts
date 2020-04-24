@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
       this.orderList[i].Quantity=1;
     }
   }
-  
+ 
   InputChange(i){
     let price=this.baseList[i].SellingPrice;
     

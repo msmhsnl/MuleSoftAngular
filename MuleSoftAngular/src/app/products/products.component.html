@@ -1,7 +1,12 @@
-<ul>
+<ul class="list">
+    <div class="list-item title">
+        <div class="sub-item code">Product Code</div>
+        <div class="sub-item name">Product Name</div>
+        <div class="sub-item price">Selling Price</div>
+        <div class="sub-item price"></div>
+    </div>
     <li *ngFor="let product of products;let i=index">
         <div class="list-item">
-            <div class="sub-item index">{{i+1}}</div>
             <div class="sub-item code">{{product.ProductCode}}</div>
             <div class="sub-item name">{{product.ProductName}}</div>
             <div class="sub-item price">{{product.SellingPrice}}TL</div>
