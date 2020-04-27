@@ -13,6 +13,7 @@ import { OrderDialogComponent } from '../order-dialog/order-dialog.component';
 })
 export class OrdersComponent implements OnInit {
 dialogResult;
+/*
   openDialog(){
     let dialogRef = this.dialog.open(OrderDialogComponent, {
 
@@ -24,7 +25,7 @@ dialogResult;
     });
     return this.dialogResult;
   }
-
+*/
 
   public orders:Order[];
 
@@ -38,18 +39,21 @@ dialogResult;
       }
     });
   }
-  setDropdownView="display:none";
+  //setDropdownView="display:none";
   ToggleView(i){
     let item=document.getElementById(i);
-    if(item.getAttribute("style")==""){
-      item.setAttribute("style","display:none");
-    }else{
+    if(item.getAttribute("style")!==""){
       item.setAttribute("style","");
+      
+    }else{
+      item.setAttribute("style","display:none");
     }
+    /*
     let res=this.openDialog();
     if(res=="delete"){
 
     }
+    */
   }
   GetTotal(order){
     let total=0;
