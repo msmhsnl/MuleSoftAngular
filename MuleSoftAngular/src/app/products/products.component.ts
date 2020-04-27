@@ -54,7 +54,7 @@ export class ProductsComponent implements OnInit {
     private dataService:DataService
     ) {
       this.GetProducts();
-      localStorage.clear();
+      //localStorage.clear();
   }
 
   ngOnInit(): void {}

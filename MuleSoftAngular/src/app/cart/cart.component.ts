@@ -29,7 +29,10 @@ export class CartComponent implements OnInit {
     
     this.orderList[i].SellingPrice=price*quantity;
   }
-
+  EmptyCart(){
+    localStorage.clear();
+    window.location.reload();
+  }
   CreateOrder(){
     
     let orderCode=(<HTMLInputElement>document.getElementById("orderCode")).value;

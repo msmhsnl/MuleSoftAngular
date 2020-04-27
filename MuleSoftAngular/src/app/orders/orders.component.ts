@@ -39,7 +39,7 @@ dialogResult;
       }
     });
   }
-  //setDropdownView="display:none";
+  
   ToggleView(i){
     let item=document.getElementById(i);
     if(item.getAttribute("style")!==""){
@@ -48,12 +48,10 @@ dialogResult;
     }else{
       item.setAttribute("style","display:none");
     }
-    /*
-    let res=this.openDialog();
-    if(res=="delete"){
-
-    }
-    */
+    
+    //this.openDialog();
+    
+    
   }
   GetTotal(order){
     let total=0;
